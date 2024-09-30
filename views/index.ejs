@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Yodafy</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+    </head>
+
+    <body class="bg-light">
+        <div class="container mt-5">
+            <h1 class="text-center mb-4">Yodafy</h1>
+
+            <% if (locals.translated) { %>
+                <div class="mb-4">
+                    <h2>Your "yodafied" text: </h2>
+                    <h4><%= locals.translated %></h4>
+                </div>
+            <% } %>
+            <h2 class="mt-5">Enter text to "yodafy"!</h2>
+            <form action="/translate_text" method="POST" class="mt-3">
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" name="input" placeholder="Enter text here" required>
+                </div>
+                <button type="submit" class="btn-primary btn">Submit</button>
+            </form>
+
+            <% if (locals.displayError) { %>
+                <br></br>
+                <div class="alert alert-danger" role="alert">
+                    Error yodafy-ing your text, please try again
+                </div>
+            <% } %>
+        </div>
+    </body>
+</html>
